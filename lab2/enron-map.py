@@ -13,8 +13,8 @@ for line in sys.stdin:
 	keep_sndr = '@enron.com' in data[1]
 	keep_rcpt = '@enron.com' not in data[2]
 
-	# if keep_date and keep_sndr and keep_rcpt:
+	if keep_date and keep_sndr and keep_rcpt:
 		# Emit the sender to the reduce.
-	print data[1].strip()
+		print data[1].strip()
 		# for item in data:
 		# 	print item.strip()+ "\t"

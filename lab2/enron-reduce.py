@@ -10,11 +10,10 @@ for line in sys.stdin:
 	key = line[0]
 	if (key != current_word):
 		if (current_count > 0):
-			print str(current_count) + '\t' + current_word
+			print current_word + '\t' + str(current_count)
 			current_count = 0
 		current_word = key
 	current_count += 1
 
 if (current_count > 0):
-	# print current_word + '\t' + str(current_count)
-	print str(current_count) + '\t' + current_word
+	print current_word + '\t' + str(current_count)
