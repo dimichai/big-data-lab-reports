@@ -1,0 +1,8 @@
+a = LOAD 's3n://bd-group10/kjv.txt';
+b = FOREACH a GENERATE FLATTEN(TOKENIZE((chararray)$0)) AS word;
+b1 = FILTER b BY (int)SIZE(word)>3;
+c = GROUP b1 BY word;
+d = FOREACH c GENERATE COUNT(b1) AS ct, group;
+e = ORDER d BY ct DESC;
+f = LIMIT e 20;
+STORE f INTO 's3n://bd-group10/bible_wordcount_larger_3_top20';

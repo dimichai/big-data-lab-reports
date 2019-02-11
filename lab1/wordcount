@@ -1,0 +1,6 @@
+a = LOAD 'kjv.txt';
+b = FOREACH a GENERATE FLATTEN(TOKENIZE((chararray)$0)) AS word;
+c = GROUP b BY word;
+d = FOREACH c GENERATE COUNT(b) AS ct, group;
+e = ORDER d BY ct DESC;
+STORE e INTO 'bible_wordcount';
